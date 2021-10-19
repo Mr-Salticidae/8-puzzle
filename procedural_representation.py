@@ -1,4 +1,3 @@
-from numpy import rot90
 from puzzle import generate_puzzle, display_puzzle
 
 
