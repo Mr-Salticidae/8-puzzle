@@ -8,6 +8,11 @@ PATH_2 = [1, 4, 3, 6, 7, 8, 5, 2]
 PATH_3 = [3, 6, 7, 8, 5, 4]
 PATH_4 = [5, 8, 7, 6, 3]
 PATH_5 = [3, 0, 1, 4, 5, 2, 1, 0, 3]
+PATH_6 = [5, 8, 7, 6, 3, 4]
+PATH_7 = [3, 4, 7, 6]
+PATH_8 = [8, 7, 6, 3]
+PATH_9 = [3, 0, 1, 2, 5, 4, 7, 8, 5, 2, 1, 0, 3]
+PATH_10 = [3, 4, 7, 6]
 
 
 def rotate_one_step(puzzle, path):
@@ -75,8 +80,7 @@ def step_3(puzzle, path_3):
 
 def step_4(puzzle, path_4):
     print("Step 4")
-    while puzzle[3] != 0:
-        puzzle = rotate_one_step(puzzle, path_4)
+    puzzle = exchange(puzzle, 0, path_4)
     return puzzle
 
 
@@ -86,11 +90,38 @@ def step_5(puzzle, path_5):
     return puzzle
 
 
-# def step_6(puzzle, path_6):
-#     print("Step 6")
-#     while puzzle[3] != 0:
-#         puzzle = rotate_one_step(puzzle, path_6)
-#     return puzzle
+# There are some bugs here. I got confused. Why can't it stop sometimes?
+def step_6(puzzle, path_6):
+    print("Step 6")
+    while puzzle[5] != 4:
+        puzzle = rotate_one_step(puzzle, path_6)
+    return puzzle
+
+
+def step_7(puzzle, path_7):
+    print("Step 7")
+    while puzzle[4] != 5:
+        puzzle = rotate_one_step(puzzle, path_7)
+    return puzzle
+
+
+def step_8(puzzle, path_8):
+    print("Step 8")
+    puzzle = exchange(puzzle, 0, path_8)
+    return puzzle
+
+
+def step_9(puzzle, path_9):
+    print("Step 9")
+    puzzle = exchange(puzzle, 0, path_9)
+    return puzzle
+
+
+def step_10(puzzle, path_10):
+    print("Step 10")
+    while puzzle[4] != 0:
+        puzzle = rotate_one_step(puzzle, path_10)
+    return puzzle
 
 
 puzzle = generate_puzzle()
@@ -98,5 +129,17 @@ puzzle = step_0(puzzle, PATH_BEGIN)
 puzzle = step_1(puzzle, PATH_1)
 puzzle = step_2(puzzle, PATH_2)
 puzzle = step_3(puzzle, PATH_3)
-puzzle = step_4(puzzle, PATH_4)
-puzzle = step_5(puzzle, PATH_5)
+if puzzle[2] != 2:
+    puzzle = step_4(puzzle, PATH_4)
+    puzzle = step_5(puzzle, PATH_5)
+puzzle = step_6(puzzle, PATH_6)
+if puzzle[8] != 5:
+    puzzle = step_7(puzzle, PATH_7)
+    puzzle = step_8(puzzle, PATH_8)
+    puzzle = step_9(puzzle, PATH_9)
+puzzle = step_10(puzzle, PATH_10)
+
+if puzzle[3] == 8:
+    print("Victory!")
+else:
+    print("Defeat...")
