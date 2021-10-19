@@ -5,6 +5,7 @@ from puzzle import generate_puzzle, display_puzzle
 PATH_BEGIN = [1, 4, 3, 6, 7, 8, 5, 2]
 PATH_1 = [3, 6, 7, 8, 5, 4, 1, 0]
 PATH_2 = [1, 4, 3, 6, 7, 8, 5, 2]
+PATH_3 = [3, 6, 7, 8, 5, 4]
 
 
 def move_one_step(puzzle, path):
@@ -22,7 +23,7 @@ def move_one_step(puzzle, path):
     return puzzle
 
 
-def init(puzzle, path_begin):
+def step_0(puzzle, path_begin):
     if puzzle[0] == 0:
         tmp = puzzle[1]
         puzzle[1] = 0
@@ -34,19 +35,26 @@ def init(puzzle, path_begin):
     return puzzle
 
 
-def move_for_1(puzzle, path_1):
+def step_1(puzzle, path_1):
     while puzzle[0] != 1:
         puzzle = move_one_step(puzzle, path_1)
     return puzzle
 
 
-def move_for_2(puzzle, path_2):
+def step_2(puzzle, path_2):
     while puzzle[1] != 2:
         puzzle = move_one_step(puzzle, path_2)
     return puzzle
 
 
+def step_3(puzzle, path_3):
+    while puzzle[4] != 3:
+        puzzle = move_one_step(puzzle, path_3)
+    return puzzle
+
+
 puzzle = generate_puzzle()
-puzzle = init(puzzle, PATH_BEGIN)
-puzzle = move_for_1(puzzle, PATH_1)
-puzzle = move_for_2(puzzle, PATH_2)
+puzzle = step_0(puzzle, PATH_BEGIN)
+puzzle = step_1(puzzle, PATH_1)
+puzzle = step_2(puzzle, PATH_2)
+puzzle = step_3(puzzle, PATH_3)
