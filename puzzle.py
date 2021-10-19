@@ -2,12 +2,6 @@ import random
 import numpy as np
 
 
-def generate_puzzle(dimension_size=3):
-    puzzle = [i for i in range(dimension_size ** 2)]
-    random.shuffle(puzzle)
-    return puzzle
-
-
 def display_puzzle(puzzle):
     print('-'*13)
     for i in range(len(puzzle)):
@@ -19,3 +13,10 @@ def display_puzzle(puzzle):
         else:
             print(puzzle[i], end=' '*4)
     print()
+
+
+def generate_puzzle(dimension_size=3):
+    puzzle = [i for i in range(dimension_size ** 2)]
+    random.shuffle(puzzle)
+    display_puzzle(puzzle)
+    return puzzle
