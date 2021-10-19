@@ -89,7 +89,6 @@ def step_5(puzzle, path_5):
     return puzzle
 
 
-# There are some bugs here. I got confused. Why can't it stop sometimes?
 def step_6(puzzle, path_6):
     print("Step 6")
     while puzzle[5] != 4:
@@ -127,8 +126,8 @@ puzzle = generate_puzzle()
 puzzle = step_0(puzzle, PATH_BEGIN)
 puzzle = step_1(puzzle, PATH_1)
 puzzle = step_2(puzzle, PATH_2)
-puzzle = step_3(puzzle, PATH_3)
-if puzzle[2] != 2:
+if puzzle[2] != 3:
+    puzzle = step_3(puzzle, PATH_3)
     puzzle = step_4(puzzle, PATH_4)
     puzzle = step_5(puzzle, PATH_5)
 puzzle = step_6(puzzle, PATH_6)
