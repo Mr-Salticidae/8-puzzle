@@ -1,4 +1,5 @@
-from puzzle import generate_puzzle, display_puzzle
+from time import time
+from puzzle import Puzzle, generate_initial_state, display_puzzle
 
 
 PATH_BEGIN = [1, 4, 3, 6, 7, 8, 5, 2]
@@ -122,22 +123,22 @@ def step_10(puzzle, path_10):
     return puzzle
 
 
-puzzle = generate_puzzle()
-puzzle = step_0(puzzle, PATH_BEGIN)
-puzzle = step_1(puzzle, PATH_1)
-puzzle = step_2(puzzle, PATH_2)
-if puzzle[2] != 3:
-    puzzle = step_3(puzzle, PATH_3)
-    puzzle = step_4(puzzle, PATH_4)
-    puzzle = step_5(puzzle, PATH_5)
-puzzle = step_6(puzzle, PATH_6)
-if puzzle[8] != 5:
-    puzzle = step_7(puzzle, PATH_7)
-    puzzle = step_8(puzzle, PATH_8)
-    puzzle = step_9(puzzle, PATH_9)
-puzzle = step_10(puzzle, PATH_10)
+def procedual_representation(puzzle):
+    puzzle = step_0(puzzle, PATH_BEGIN)
+    puzzle = step_1(puzzle, PATH_1)
+    puzzle = step_2(puzzle, PATH_2)
+    if puzzle[2] != 3:
+        puzzle = step_3(puzzle, PATH_3)
+        puzzle = step_4(puzzle, PATH_4)
+        puzzle = step_5(puzzle, PATH_5)
+    puzzle = step_6(puzzle, PATH_6)
+    if puzzle[8] != 5:
+        puzzle = step_7(puzzle, PATH_7)
+        puzzle = step_8(puzzle, PATH_8)
+        puzzle = step_9(puzzle, PATH_9)
+    puzzle = step_10(puzzle, PATH_10)
 
-if puzzle[3] == 8:
-    print("Victory!")
-else:
-    print("Defeat...")
+    if puzzle[3] == 8:
+        print("Procedual Representation: Victory!")
+    else:
+        print("Procedual Representation: Defeat...")

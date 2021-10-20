@@ -18,3 +18,6 @@ def breadth_first_search(initial_state):
                 if child.goal_test():
                     return child.find_solution()
                 q.put(child)
+        if len(explored) > 100:
+            break
+    return 'Defeat...'
